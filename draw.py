@@ -89,12 +89,12 @@ d.text((16, 10), "THE WORLD IN ONE DAY  \u2022  A FRONT PAGE OF THURSDAY'S NEWS"
 d.text((16, 28), "WORLD NEWS", font=font(F_SERIF, 52), fill=(255, 255, 255))
 d.text((700, 30), "THURSDAY", font=font(F_SERIF, 30), fill=(255, 255, 255))
 d.text((700, 62), "26 NOVEMBER 2026", font=font(F_SANS_B, 22), fill=(255, 210, 90))
-d.text((16, 92), "26 stories  \u2022  4 regions  \u2022  Every story first reported today",
+d.text((16, 92), "25 stories  \u2022  4 regions  \u2022  Every story first reported today",
        font=font(F_SANS, 11), fill=(180, 200, 230))
 d.rectangle([0, 108, W, 112], fill=RED)
-d.text((16, 118), "SUMMING UP THURSDAY 26 NOVEMBER 2026 \u2014 KIM ORDERS NUCLEAR DEPLOYMENT, GULF WAR WIDENS, ASIAN MARKETS ROUTED",
+d.text((16, 118), "SUMMING UP THURSDAY 26 NOVEMBER 2026 \u2014 KIM CALLS FOR BROADER NUCLEAR USE, GULF WAR WIDENS, ASIAN MARKETS ROUTED",
        font=font(F_SANS_B, 11), fill=RED)
-d.text((16, 132), "Sources: Reuters  \u2022  AP  \u2022  CNN  \u2022  Kyiv Independent  \u2022  Yonhap  \u2022  Globes",
+d.text((16, 132), "Sources: Reuters  \u2022  AP  \u2022  CNN  \u2022  WSJ  \u2022  Yonhap  \u2022  Globes",
        font=font(F_SANS, 10), fill=GREY)
 
 # ---------------- HERO (lead story) ----------------
@@ -130,13 +130,13 @@ for scx, scy, sr in [(ax + 40, ay + 100, 9), (ax + 62, ay + 106, 12),
     d.ellipse([scx - sr, scy - sr, scx + sr, scy + sr], fill=(150, 155, 165))
 # banner strip across the bottom of the art panel
 d.rectangle([ax, ay + ah - 20, ax + aw, ay + ah], fill=RED)
-d.text((ax + 8, ay + ah - 17), "NUCLEAR DEPLOYMENT ORDERED",
+d.text((ax + 8, ay + ah - 17), "CALLS FOR BROADER NUCLEAR USE",
        font=font(F_SANS_B, 9), fill=(255, 255, 255))
 # hero text
 tx = hx + 232
 d.text((tx, hy + 8), "LEAD STORY \u2014 NORTH KOREA", font=font(F_SANS_B, 11), fill=RED)
 y = hy + 26
-y = draw_text_block(d, tx, y, wrap(d, "Kim orders wider tactical nuclear deployment",
+y = draw_text_block(d, tx, y, wrap(d, "Kim calls for broader tactical nuclear use",
                                    font(F_SERIF, 20), hw - 244), font(F_SERIF, 20), INK, 23)
 y = draw_text_block(d, tx, y + 2, wrap(d, "Kim Jong Un inspects nuclear production and weapons "
        "research sites, saying North Korea should deploy tactical nuclear weapons "
@@ -150,15 +150,15 @@ rx, ry, rw = 656, 152, 352
 d.rectangle([rx, ry, rx + rw, ry + 148], fill=NAVY)
 d.text((rx + 12, ry + 8), "THE DAY IN NUMBERS", font=font(F_SANS_B, 12), fill=(255, 210, 90))
 nums = [("NIKKEI 225", "\u22122.8%"), ("KOSPI", "\u22126.2%"), ("S&P 500", "\u22120.25%"),
-        ("BRENT CRUDE", "$90.82"), ("GOLD / OZ", "$3,618"), ("BITCOIN", "$60,018")]
+        ("BRENT CRUDE", "$94.61"), ("GOLD / OZ", "$3,535.80"), ("BITCOIN", "$58,734")]
 for i, (k, v) in enumerate(nums):
     nx = rx + 12 + (i % 3) * 116
     ny = ry + 30 + (i // 3) * 34
     d.text((nx, ny), k, font=font(F_SANS_B, 9), fill=(180, 200, 230))
     d.text((nx, ny + 12), v, font=font(F_SANS_B, 15), fill=(255, 255, 255))
-d.text((rx + 12, ry + 104), "Nikkei 57,012 \u2022 Asian rout deepens \u2022 Brent holds above $90.",
+d.text((rx + 12, ry + 104), "Nikkei 57,012 \u2022 Dow +0.33%, Nasdaq -0.62% \u2022 Brent $94.61.",
        font=font(F_SANS, 10), fill=(200, 210, 225))
-d.text((rx + 12, ry + 122), "Market data, 26 Nov 2026", font=font(F_SANS_I, 9), fill=(150, 170, 200))
+d.text((rx + 12, ry + 122), "Market data: 25 Nov closes", font=font(F_SANS_I, 9), fill=(150, 170, 200))
 
 # ---------------- TIMELINE STRIP (WITA) ----------------
 ty = 310
@@ -188,16 +188,16 @@ cols = [
     ("MIDDLE EAST & GULF", RED, [
         ("Gulf war widens, oil tops $94",
          "Houthi drone hits Riyadh's tallest tower again; 11 hurt.",
-         "Reuters; SimpleLife"),
+         "Reuters; WSJ"),
         ("Giza tanker blast kills 31",
          "Fuel tanker overturns on Ring Road; fire engulfs 27 vehicles.",
          "AP; Reuters; CNN"),
         ("Judges urge dropping Netanyahu case",
          "Court urges dropping Case 4000 bribery charge over weak evidence.",
          "Reuters; CNN; Globes"),
-        ("OPEC blames EU for COP31 collapse",
-         "OPEC chief: producers acted in good faith, blames EU; talks ended Sun.",
-         "Reuters"),
+        ("Two tankers hit mines in Hormuz",
+         "Iran says vessels struck mines, caught fire; warns ships to coordinate passage.",
+         "Reuters; Jerusalem Post"),
         ("Dubai Islamic Bank buys Emirates Islamic",
          "$159B-asset Islamic lender created in rare UAE banking merger.",
          "Reuters"),
@@ -209,12 +209,12 @@ cols = [
         ("Ukraine hits Savasleyka air base",
          "3 MiG-31s + 2 Su-34s damaged; 88 of 112 drones downed.",
          "Reuters; General Staff"),
-        ("Ukraine hits two Samara refineries",
-         "Russian refining at 20-year low after strikes on 18 refineries.",
-         "Kyiv Independent; Reuters"),
-        ("European leaders meet in Berlin",
-         "26\u201327 Nov talks on Ukraine; US holds ~60 Patriot interceptors.",
-         "Particle; FT"),
+        ("Ukraine claims two Samara refinery hits",
+         "Ukraine claims hits on Kuibyshev, Syzran refineries; fires, 1 killed.",
+         "Reuters; General Staff"),
+        ("EU leaders meet 26-27 Nov",
+         "26\u201327 Nov Summit weighs EUR 45B Ukraine loan; US holds ~60 Patriot interceptors.",
+         "Reuters; FT"),
     ]),
     ("ASIA & OCEANIA", BLUE, [
         ("North Korea expels Swiss envoy",
@@ -225,19 +225,16 @@ cols = [
          "Reuters"),
         ("Trump team unveils Section 301 duties",
          "China capped 20% (40% if truce fails), Taiwan 15%; 14 economies hit.",
-         "Reuters; SimpleLife"),
+         "Reuters; USTR"),
         ("Hasina asks again to fly home 16 Dec",
          "Dhaka refuses; says India must extradite her; border tightened.",
-         "Tribune; selfstudys"),
+         "Reuters; TBS"),
         ("PIA shifts UK flights to own fleet",
          "Norse Atlantic suspends ops; 2 flights cancelled from today.",
          "Reuters"),
-        ("India marks Constitution Day",
-         "Rs15,000-crore Nepal package agreed after Modi\u2013Shah talks.",
-         "selfstudys"),
         ("SoftBank \u221215% in Tokyo rout",
-         "Tokyo Electron \u221212.5%, Kioxia \u221214.2% as AI sell-off deepens.",
-         "Peter Lewis briefing; Coindataflow"),
+         "Tokyo Electron \u221214%, Kioxia \u221214% as AI sell-off deepens.",
+         "WSJ; Dow Jones"),
     ]),
 ]
 # second section inside column 2 (Americas & Africa) after Ukraine & Europe
@@ -250,13 +247,13 @@ col2_extra = ("AMERICAS & AFRICA", BLUE, [
      "Reuters"),
     ("ECOWAS approves regional force plan",
      "Regional force deployment roadmap set for end-2027.",
-     "lamediterranee"),
+     "ECOWAS; APA"),
     ("Thanksgiving: US markets shut",
      "S&P \u22120.25%, Dow +0.33% at 25 Nov close; Americans mark the day.",
      "LPL; Barron's"),
-    ("Eni + Repsol pledge $2B in Venezuela",
-     "Card\u00f3n IV gas output to more than double; LNG exports by 2031.",
-     "Reuters"),
+    ("US economy grew 4.3% in Q3",
+     "Card\u00f3n Fastest in 3 years, revised up from 3.4%; PCE inflation 3.8% in Oct.",
+     "Reuters; CNN"),
 ])
 final_ys = []
 for ci, (title, color, items) in enumerate(cols):
@@ -283,13 +280,13 @@ d.text((16, ay), "ALSO TODAY", font=font(F_SANS_B, 11), fill=INK)
 d.line([16, ay + 16, 1008, ay + 16], fill=RED, width=2)
 also = [
     ("Fed Beige Book: modest growth",
-     "Modest growth, wage gains, persistent price pressure. \u2014 SimpleLife"),
-    ("Qatar Grand Prix goes ahead",
-     "Race on this weekend despite war; Saudi fans flood Doha. \u2014 Reuters"),
-    ("Kashima top in Asia",
-     "3\u20130 win over Jeonbuk tops Champions League East. \u2014 Reuters"),
-    ("Gukesh faces Sindarov",
-     "World Chess Championship duel in Geneva. \u2014 selfstudys"),
+     "Modest growth, wage gains, persistent price pressure. \u2014 Reuters"),
+    ("UCL: Barca, Liverpool win",
+     "Barcelona 4-1, Liverpool 3-0; PSG held 2-2, Bayern lose 2-1. — UEFA"),
+    ("Macy's parade postponed",
+     "Macy's 100th parade moved to Saturday — first weather postponement ever. — Reuters"),
+    ("Gukesh-Sindarov chess drawn",
+     "World title match in Geneva level 1-1 after two draws; Game 3 today. — Chess.com"),
 ]
 for ai, (h, t) in enumerate(also):
     ax = 16 + ai * 248
