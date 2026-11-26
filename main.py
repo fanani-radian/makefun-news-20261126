@@ -20,13 +20,19 @@ PICTURE_NAME = "entry.png"
 
 
 def build_picture() -> Path:
-    """Run the drawing program and return the finished picture's path."""
+    """Run the drawing program and return the finished picture's path.
+
+    The drawing program leaves entry.png in MAKEFUN_OUTPUT_DIR when that
+    variable is set (the grader's writable output folder; the repository
+    itself is read-only there), or beside this file otherwise.
+    """
     painter = HERE / "draw.py"
     subprocess.run([sys.executable, str(painter)], cwd=HERE, check=True)
-    picture = HERE / PICTURE_NAME
-    if not picture.is_file():
-        raise SystemExit("drawing program finished without leaving entry.png behind")
-    return picture
+    drop_folder = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    for candidate in (drop_folder / PICTURE_NAME, HERE / PICTURE_NAME):
+        if candidate.is_file():
+            return candidate
+    raise SystemExit("drawing program finished without leaving entry.png behind")
 
 
 def main() -> int:
@@ -34,8 +40,9 @@ def main() -> int:
     drop_folder = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     drop_folder.mkdir(parents=True, exist_ok=True)
     target = drop_folder / PICTURE_NAME
-    shutil.copyfile(picture, target)
-    target.chmod(0o644)
+    if picture.resolve() != target.resolve():
+        shutil.copyfile(picture, target)
+        target.chmod(0o644)
     print(f"front page ready: {target} ({target.stat().st_size} bytes)")
     return 0
 

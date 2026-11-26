@@ -9,7 +9,10 @@ columns (Middle East & Gulf / Ukraine & Europe + Americas & Africa /
 Asia & Oceania), four "Also today" briefs, a pin map and a date-check box.
 """
 import math
+import os
 import textwrap  # noqa: F401  (kept for parity with the shared helper style)
+from pathlib import Path
+
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 1024, 1024
@@ -345,5 +348,10 @@ bottom = my + mh
 print("saved; columns end at", final_ys, "also-row at", ay, "bottom at", bottom)
 assert bottom <= H, f"layout overflow: bottom {bottom} > {H}"
 
-img.save("/home/hatch/workspace/make-money/news-20261126/repo/entry.png",
-         optimize=True)
+# Write the picture where the harness can read it: the folder named by
+# MAKEFUN_OUTPUT_DIR when set (the grader's writable /output; the repo
+# itself is read-only there), otherwise beside this script.
+out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", Path(__file__).resolve().parent))
+out_dir.mkdir(parents=True, exist_ok=True)
+img.save(out_dir / "entry.png", optimize=True)
+print("wrote", out_dir / "entry.png")
